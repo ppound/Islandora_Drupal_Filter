@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--File to hold drupal connection info for the FilterDrupal servlet filter.  For multisite drupal installs you can include multiple connection elements.  We will query all the databases and assume any
+    user in any drupal db with the same username and password are the same user.  We will gather all roles for that user from all databases.  This is a potential security risk if a user in one drupal db has the same username and password
+    as another user in a seperate drupaldb (and is not the same user).  We are also assuming all drupal dbs to be mysql.  This file should be located in the same file as the fedora.cfcg file-->
+<FilterDrupal_Connection>
+    <!--server attribute is the domain name or ip of the database server-->
+    <connection server="localhost" dbname="drupaldb" user="username" password="password" port="3306">
+    <sql>
+        <!--Different sql statement for each connection.  This is for drupal multisites that are setup using one database with table prefixes.  We don't do this but some people might.-->
+          SELECT distinct u.uid as userid, u.name as Name, u.pass as Pass, r.name as role FROM users u,role r, users_roles where u.name=? and u.pass=? and r.rid=users_roles.rid and u.uid=users_roles.uid;
+    </sql>     
+    </connection>
+    <connection server="localhost" dbname="drupaldbother" user="username" password="password" port="3306">
+        <sql>
+            <!--Different sql statement for each connection.  This is for drupal multisites that are setup using one database with table prefixes.  We don't do this but some people might.  Usually the sql will be the same for each connection element-->
+             SELECT distinct u.uid as userid, u.name as Name, u.pass as Pass, r.name as role FROM users u,role r, users_roles where u.name=? and u.pass=? and r.rid=users_roles.rid and u.uid=users_roles.uid;
+</sql>     
+    </connection>    
+</FilterDrupal_Connection>
