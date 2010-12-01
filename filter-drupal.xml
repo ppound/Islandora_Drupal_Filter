@@ -16,4 +16,23 @@
              SELECT distinct u.uid as userid, u.name as Name, u.pass as Pass, r.name as role FROM users u,role r, users_roles where u.name=? and u.pass=? and r.rid=users_roles.rid and u.uid=users_roles.uid;
 </sql>     
     </connection>    
+    <service_requests>
+           <service name="djatoka">
+                <!--
+                         space-separated list of allowed ips. use 'local' to allow
+                         requests from same ip as fedora
+                      -->
+                  <allowed_ips>local</allowed_ips>
+             
+                   <!--
+                         request uri must match this regex to be eligible for service
+                         access
+                       -->
+                   <allowed_uri_pattern>^.*/(JP2|TEI)$</allowed_uri_pattern>
+             
+                   <!-- <allowed_uri_pattern>^.*$</allowed_uri_pattern> -->
+                   <!-- space-separated list of roles granted to service requests -->
+                   <roles>administrator fedora_anonymous</roles>
+                 </service>
+           </service_requests>
 </FilterDrupal_Connection>

@@ -23,6 +23,9 @@ fedora-auth
         ca.upei.roblib.fedora.servletfilter.DrupalAuthModule required
         debug=true;
 };
+ *
+ * jaas implementation of the filter.  For fesl authentication
+ * configured in jaas.conf see above
  */
 
 package ca.upei.roblib.fedora.servletfilter;

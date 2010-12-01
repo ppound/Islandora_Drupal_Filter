@@ -31,6 +31,7 @@ import org.dom4j.io.SAXReader;
 /**
  *
  * @author ppound
+ * based on fedora xmluserinfo from Fedora commons
  */
 class DrupalUserInfo {
 

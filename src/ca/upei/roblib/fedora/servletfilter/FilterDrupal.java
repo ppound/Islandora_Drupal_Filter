@@ -6,6 +6,8 @@
  * import fedora.common.Constants;
  * import fedora.server.security.servletfilters.BaseCaching;
  * import fedora.server.security.servletfilters.CacheElement;
+ *
+ * Legacy filter for use on sites with no fesl authentication.  configured in web.xml
  */
 
 package ca.upei.roblib.fedora.servletfilter;

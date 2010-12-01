@@ -27,6 +27,9 @@ import org.fcrepo.server.security.servletfilters.Cache;
 import org.fcrepo.server.security.servletfilters.CacheElement;
 import org.fcrepo.server.security.servletfilters.ExtendedHttpServletRequest;
 
+/**filter used exclusively for djatoka with api-a locked down.
+ * for use in non fesl base sites.  configured in web.xml
+ */
 
 public class FilterIslandoraAuth extends BaseCaching {
 	private static final String PARAMETER_NAME_UID = "uid";
